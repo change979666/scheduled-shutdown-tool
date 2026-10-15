@@ -154,8 +154,8 @@ class ShutdownApp:
         label.config(text=f'{hours:02d}:{mins:02d}:{secs:02d}')
         label.after(1000, lambda: self.update_alert_time(label, end_time))
         if (datetime.datetime.now() - self.last_color_change).seconds >= 5:
-            # 这里原代码可能有误，推测是修改 canvas 的背景色
-            self.canvas.config(bg=self.colors[self.color_index % len(self.colors)])
+            # Cycle the fullscreen warning window's background color.
+            self.alert_window.config(bg=self.colors[self.color_index % len(self.colors)])
             self.color_index += 1
             self.last_color_change = datetime.datetime.now()
 
